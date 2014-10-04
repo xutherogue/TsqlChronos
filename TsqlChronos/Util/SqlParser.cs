@@ -17,5 +17,13 @@ namespace TsqlChronos.Util
             IList<ParseError> errors;
             return parser.Parse(reader, out errors);
         }
+
+        public static string GetSql(TSqlFragment fragment)
+        {
+            var scriptGenerator = new Sql110ScriptGenerator();
+            string result;
+            scriptGenerator.GenerateScript(fragment, out result);
+            return result;
+        }
     }
 }
